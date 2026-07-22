@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import {
-  completeTask,
-  getTasks,
-  type Task,
-} from "./tasksApi";
+import { completeTask, getTasks, Task } from "./tasksApi";
+
 
 export function TaskManager() {
   const [tasks, setTasks] = useState<Task[]>([]);
