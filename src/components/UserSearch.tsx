@@ -23,16 +23,20 @@ export function UserSearch({ searchUsers }: Props) {
 
     setIsLoading(true);
 
-    const timer = setTimeout(() => {
-      searchUsers(query)
-        .then((data) => {
-          setUsers(data);
-        })
-        .catch(() => {
-          setError("Search failed");
-        });
+    const timer = setTimeout(async () => {
+      try{
+        const data = await searchUsers(query)
+          .then((data) => {
+            setUsers(data);
+          })
 
-      setIsLoading(false);
+      }catch{
+        setError("Search failed");
+      }finally{
+        setIsLoading(false);
+      }
+  
+
     }, 300);
 
     return () => {
